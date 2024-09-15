@@ -8,3 +8,11 @@ Startup Application for BYU CS 260
 ## Elevator Pitch
 
 ## Technologies
+- **HTML**
+- **CSS**
+- **JavaScript**
+- **React**
+- **Web Service**
+- **Authentication**
+- **Database**
+- **WebSocket**
