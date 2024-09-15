@@ -26,4 +26,4 @@ A web application that allows users to upload images and locations of hammock sp
 - **WebSocket** Notify users when other users interact with their posts. Such as saving a hammock spot or saving it.
 
 ## Sketchup
-![Website Sketch](CS 260.jpeg.png)
+![Website Sketch](CS260.png)
