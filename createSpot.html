@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications</title>
+  </head>
+  <body>
+    <!-- Put these items in a flexbox row-->
+    <div>
+        <h1>Hangspot</h1>
+        <a href="createSpot.html">New Spot</a>
+    </div>
+    <!-- put these Items in a flexbox row below it-->
+    <nav>
+        <img src="IMG_1840.jpg" height="30px" width="35px"/>
+        <span>"Username Here"</span>
+        <a href = "index.html">Home</a>
+        <a href="notifications.html">Notifications</a>
+        <a href="saved.html">Saved Spots</a>
+        <a href="settings.html">Settings</a>
+    </nav>
+    <br><hr/>
+    <h2>Create Hammock Spot Post</h2>
+    <form action="/create-hammock-post" method="POST" enctype="multipart/form-data">
+      
+      <label for="name">Spot Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter the spot name" required>
+  
+      
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" placeholder="Enter the location or click on the map" required>
+      
+      <!-- Google Maps Placeholder -->
+      <div>"Map API here"</div>
+  
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+  
+      <label for="description">Description</label>
+      <textarea id="description" name="description" placeholder="Describe the hammock spot" required></textarea>
+  
+      <button type="submit">Post</button>
+    </form>
+  </div>
+  </body>
+</html>
