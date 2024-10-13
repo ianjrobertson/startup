@@ -8,3 +8,10 @@
     color: white; /* hover color, optional */
     text-decoration: none; /* no underline on hover */
   }
+  nav {
+    display: flex;
+  }
+
+  .header-link {
+    margin-right: 10px;
+  }
