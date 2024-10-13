@@ -161,6 +161,8 @@ table {
   padding: 10px;
 }
 
+
+
 .saved-table {
   width: 100%;
   border-collapse: collapse;
@@ -204,4 +206,12 @@ table {
   color: #d32f2f; 
   font-weight: bold; 
   cursor: pointer; 
+}
+
+nav {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  padding: 10px;
+  overflow-x: auto;
 }
