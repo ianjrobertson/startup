@@ -1,0 +1,10 @@
+.btn-link {
+    color: white; /* or the color you want */
+    text-decoration: none; /* removes the underline */
+    display: inline-block; /* ensures the link behaves like text within the button */
+  }
+  
+  .btn-link:hover {
+    color: white; /* hover color, optional */
+    text-decoration: none; /* no underline on hover */
+  }
