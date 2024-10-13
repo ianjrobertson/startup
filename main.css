@@ -1,7 +1,6 @@
 .btn-link {
-    color: white; /* or the color you want */
-    text-decoration: none; /* removes the underline */
-    display: inline-block; /* ensures the link behaves like text within the button */
+    color: white;
+    display: inline-block; 
   }
   
   .btn-link:hover {
@@ -14,4 +13,35 @@
 
   .header-link {
     margin-right: 10px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  header a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  header {
+    padding: 20px;
+  }
+
+  nav {
+    display: flex;
+    gap: 10px;
+  }
+
+  nav img {
+    border-radius: 50%;
   }
