@@ -139,3 +139,19 @@ h2 {
   justify-content: center;
   padding: 10px;
 }
+
+.notification-table {
+  display: flex;
+  justify-content: center;
+}
+
+th td {
+  padding: 12px, 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.2em;
+}
