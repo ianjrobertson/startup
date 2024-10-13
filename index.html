@@ -33,35 +33,36 @@
         <button type="button" class="btn btn-primary header-link">
           <a class="btn-link" href="settings.html">Settings</a>
         </button>
-        <span>"Username"</span>
+        <p>"Username"</p>
         <img class="profile"src="IMG_1840.jpg" height="30px" width="35px" />
         
       </nav>
       <hr />
-      <form action="/login" method="POST">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter username"
-          required
-        />
-
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter password"
-          required
-        />
-
-        <button type="submit">Login</button>
-      </form>
+      <div class="accordion" id="loginAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingLogin">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLogin" aria-expanded="true" aria-controls="collapseLogin">
+              Login
+            </button>
+          </h2>
+          <div id="collapseLogin" class="accordion-collapse collapse show" aria-labelledby="headingLogin" data-bs-parent="#loginAccordion">
+            <div class="accordion-body">
+              <form action="/login" method="POST">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
-    <hr />
-    <br />
     <div>
       <!-- These will be a react components -->
       <div class="card">

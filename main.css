@@ -11,6 +11,10 @@
     display: flex;
   }
 
+  nav p {
+    font-weight: 600;
+  }
+
   .header-link {
     margin-right: 10px;
   }
@@ -74,6 +78,22 @@
     cursor: pointer;
   }
 
+  form div {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid;
+    border-radius: 4px;
+  }
+
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid;
+    border-radius: 4px;
+  }
+
   form button:hover {
     background-color: #2e7d32;
   }
@@ -112,4 +132,10 @@
 footer a{
   text-decoration: none;
   color: #ffffff;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
