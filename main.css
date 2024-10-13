@@ -42,10 +42,6 @@
     gap: 10px;
   }
 
-  nav img {
-    border-radius: 50%;
-  }
-
   form {
     padding: 20px;
     margin: 0 auto;
@@ -80,4 +76,29 @@
 
   form button:hover {
     background-color: #2e7d32;
+  }
+
+  div {
+    padding: 10px;
+  }
+
+  .card {
+    background-color: #fafafa;
+    padding: 20px;
+    border: 1px solid #333b33;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .card-header {
+    display: flex;
+  }
+
+  .profile {
+    border-radius: 50%;
+  }
+
+  div span {
+    font-weight: 600;
   }
