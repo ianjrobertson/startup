@@ -51,3 +51,64 @@ I implemented the basic design of my webpage I created for the first deliverable
   - Port 443, 80, 22 is reserved for which protocol?
   - What will the following code using Promises output when executed?
 
+
+## React Basics 10/14/2024
+Provide common components/encapsulation. Allows you to not repeat writing code. Like object-oriented webpage design. 
+
+Load app once, have changes occur on the frontend. React is less restrictive and more flexible then Angular and Vue. 
+
+Combining JavaScript and HTML, compile the html code. JSX code. Write code that looks like HTML, React compiles it behind the scenes. 
+
+In CodePen, set preprocesser to Babel. 
+```
+    <div id="cs260">Before React </div>
+    ReactDom.render(<p>Goodbye World</p>, document.querySelector("#cs260");
+```
+This code will find the id for cs260 and replace the inner html with the input to ReactDom.render()
+
+### Components
+Each Interactive part of your website can be created into pieces.
+
+Never want a component thats more than a page of code. 
+
+```
+const Hello = () => {
+  return <p> Hello world </p>;
+};
+const Goodbye = () => {
+  return <p>Goodbye world <Hello />
+</p>;
+};
+
+ReactDom.render(<Goodbye />, document.querySelector("#root"));
+```
+
+#### Component Class
+
+```
+class Hello extends React.Component {
+  render() {
+    return <p> Hello World </p>;
+  }
+}
+```
+
+#### Parameters
+```
+const Hello = ({ phrase }) => {
+  const [color, setColor] = React.useState("red");
+
+  function changeColor() {  
+    setColor(color === "red" ? "green" : "red");
+  }
+
+  return (
+    <div>
+      <p style={{color :color}}> Hello {phrase}</p>
+      <button onClick={changeColor}>change</button>
+    </div>
+  );
+};
+```
+
+const[color, setColor]. color is a state variable, when you change it here, it will change anywhere else it is referenced.
