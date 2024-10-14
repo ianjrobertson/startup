@@ -31,7 +31,9 @@ A web application that allows users to upload images and locations of hammock sp
 
 ## HTML Deliverable 
 Created skeleton of web app using several different pages. Included main, notifications, settings, create post and saved spots.
-Including placeholder values for API and reactive components. Created links between pages on header. Basic log in page 
+Including placeholder values for API and reactive components. Created links between pages on header. Basic log in page.
+On Main page, created cards that represent basic Hammock spot posts, these include options to like, save, and bring up the location for the spots as well as a photo and a a description.
+
 
 
 ## CSS Deliverable 
