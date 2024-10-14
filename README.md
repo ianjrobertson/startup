@@ -27,3 +27,18 @@ A web application that allows users to upload images and locations of hammock sp
 
 ## Sketchup
 ![Website Sketch](CS260.png)
+
+
+## HTML Deliverable 
+Created skeleton of web app using several different pages. Included main, notifications, settings, create post and saved spots.
+Including placeholder values for API and reactive components. Created links between pages on header. Basic log in page 
+
+
+## CSS Deliverable 
+Using Bootstrap styling on webpage. Created main.css file for styling and refactored some aspect of the page. 
+Refactored header and created buttons. Brought everything onto one row in header. Changed order of links. 
+Used accordion for Login input. 
+Added styling for hammock cards. 
+Styled table for saved spots. 
+Added consistent footer throughout page with repo link. 
+Tried to make design responsive but there are some possible improvements with header and footer. 
