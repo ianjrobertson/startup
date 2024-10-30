@@ -57,6 +57,7 @@ export default function App() {
             <Route path="/notifications" element={<Notifications/>} />
             <Route path="/saved" element={<Saved/>} />
             <Route path="/settings" element={<Settings/>} />
+            <Route path='*' element={<NotFound />} />
         </Routes>
 
         <footer>

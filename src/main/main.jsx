@@ -1,9 +1,15 @@
 import React from 'react';
+import { Login } from './login/login';
+import { Spot } from "./spot/spot"
 
 export function Main() {
   return (
-    <main className='container-fluid bg-secondary text-center'>
-      <div>Main spot displayed here</div>
+    <main>
+      <Login></Login>
+      <Spot></Spot>
+      <Spot></Spot>
+      <Spot></Spot>
+      <Spot></Spot>
     </main>
   );
 }

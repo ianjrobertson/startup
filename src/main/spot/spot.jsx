@@ -3,13 +3,13 @@ import React from 'react';
 export function Spot() {
   return (
     <div>
-      <div class="card">
+      <div className="card">
         <div>
-          <img class="profile" src="IMG_1840.jpg" height="30px" width="35px" />
+          <img className="profile" src="IMG_1840.jpg" height="30px" width="35px" />
           <span>"From DB: Username"</span>
-          <button type="button" class="btn btn-primary header-link">Like</button>
-          <button type="button" class="btn btn-primary header-link">Save</button>
-          <button type="button" class="btn btn-primary header-link">API: Location</button>
+          <button type="button" className="btn btn-primary header-link">Like</button>
+          <button type="button" className="btn btn-primary header-link">Save</button>
+          <button type="button" className="btn btn-primary header-link">API: Location</button>
         </div>
         <div>
           <span>"Hammock spot description"</span>
