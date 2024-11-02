@@ -204,3 +204,34 @@ const Hello = ({ phrase }) => {
 ```
 
 const[color, setColor]. color is a state variable, when you change it here, it will change anywhere else it is referenced.
+
+## Web Services 11/1/2024
+
+Startup service, next step is integrating APIs. This is creating the backend service. Things are really going to pick up the last few weeks. I should get as ahead as I can. 
+
+### fetch
+~~~
+fetch(url)
+.then(r => r.text())
+.then(text => console.log(text))
+~~~
+Asynchronous call to api. Executes the callback on completion. 
+
+Sends a request to the url, r is the response. 
+
+Public API list, easy if no auth, https, and cors. 
+
+Make an APP that uses chatGPT in someway, would be epic for a resume. 
+
+### http protocols:
+#### get
+Retrieve a record
+#### post
+Add a record
+#### put
+Modify a record
+#### delete
+Delete a record
+
+### Response codes
+- 200 OK
