@@ -44,3 +44,10 @@ Added styling for hammock cards.
 Styled table for saved spots. 
 Added consistent footer throughout page with repo link. 
 Tried to make design responsive but there are some possible improvements with header and footer. 
+
+## React Deliverable
+I followed the simon startup example to port my startup to react. 
+I created components for each of the main pages, and added a router to allow access to all of them. 
+I created a component for the basic hammock spot card that prevents code duplication. 
+Added Hook in hammock spot component that shows difference when liking and unliking a post. 
+
