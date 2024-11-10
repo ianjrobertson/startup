@@ -9,7 +9,7 @@ export function Login() {
               Login
             </button>
           </h2>
-          <div id="collapseLogin" className="accordion-collapse collapse" aria-labelledby="headingLogin" data-bs-parent="#loginAccordion">
+          <div id="collapseLogin" className="accordion-collapse" aria-labelledby="headingLogin" data-bs-parent="#loginAccordion">
             <div className="accordion-body">
               <form action="/login" method="POST">
                 <div className="mb-3">
