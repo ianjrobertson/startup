@@ -69,10 +69,10 @@ apiRouter.post('/auth/login', async (req, res) => {
   apiRouter.post('/auth/likePost', async (req, res) => {
     const user = Object.values(users).find((u) => u.token === req.body.token);
     if (user) {
-      if (!likes[user.email]) {
-        likes[email] = new Set();
+      if (!likedPosts[user.email]) {
+        likedPosts[email] = new Set();
       }
-      likes[email].add(postID);
+      likedPosts[email].add(postID);
     } else {
       return res.status(401).send({ error: "Invalid token or user not found" });
     }
@@ -80,6 +80,18 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
   //savePost
+  apiRouter.post('/auth/savePost', async (req, res) => {
+    const user = Object.values(users).find((u) => u.token === req.body.token);
+    if (user) {
+      if (!savedPosts[user.email]) {
+        savedPosts[email] = new Set();
+      }
+      savedPosts[email].add(postID);
+    } else {
+      return res.status(401).send({ error: "Invalid token or user not found" });
+    }
+    res.status(200).send({ message: "Post Liked successfully" });
+  })
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
