@@ -49,16 +49,18 @@ apiRouter.post('/auth/login', async (req, res) => {
   apiRouter.post('/auth/createPost', async (req, res) => {
     const user = Object.values(users).find((u) => u.token === req.body.token);
     if (user) {
-      let post = {user: user, name: req.body.name, location: req.body.location, image: req.body.image, description: req.body.description}
-      if (posts[user]) {
-        posts[user].push(post)
+      let post = {user: user.email, name: req.body.name, location: req.body.location, image: req.body.image, description: req.body.description}
+      if (posts[user.email]) {
+        posts[user.email].push(post)
       }
       else {
-        posts[user] = []
-        posts[user].push(post)
+        posts[user.email] = []
+        posts[user.email].push(post)
       }
+    } else {
+      return res.status(401).send({ error: "Invalid token or user not found" });
     }
-    res.status(200);
+    res.status(200).send({ message: "Post created successfully" });
   })
   //likePost
   //savePost
