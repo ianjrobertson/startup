@@ -7,6 +7,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 let users = {}; // We will replace this cached value with db in the next phase. 
 let scores = [];
+let posts = {}
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
@@ -43,6 +44,24 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
     res.status(401).send({ msg: 'Unauthorized' });
   });
+
+  //createPost
+  apiRouter.post('/auth/createPost', async (req, res) => {
+    const user = Object.values(users).find((u) => u.token === req.body.token);
+    if (user) {
+      let post = {user: user, name: req.body.name, location: req.body.location, image: req.body.image, description: req.body.description}
+      if (posts[user]) {
+        posts[user].push(post)
+      }
+      else {
+        posts[user] = []
+        posts[user].push(post)
+      }
+    }
+    res.status(200);
+  })
+  //likePost
+  //savePost
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
