@@ -103,6 +103,15 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
   })
   
+  //getLiked
+  apiRouter.get('/saved', (req, res) => {
+    const user = Object.values(users).find((u) => u.token === req.body.token);
+    if (user) {
+      res.send(likedPosts[user.email])
+    } else {
+      return res.status(401).send({ error: "Invalid token or user not found" });
+    }
+  })
   
 
 app.listen(port, () => {
