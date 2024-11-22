@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-export function Spot() {
+export function Spot({ name, location, description}) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
+  const userName = localStorage.getItem("userName");
 
   const toggleLike = () => setLiked((prevLiked) => !prevLiked);
   const toggleSave = () => setSaved((prevSaved) => !prevSaved);
@@ -12,7 +13,7 @@ export function Spot() {
       <div className="card">
         <div>
           <img className="profile" src="IMG_1840.jpg" height="30px" width="35px" />
-          <span>"From DB: Username"</span>
+          <span>{userName}</span>
           <button 
             type="button" 
             className="btn btn-primary header-link" 
@@ -27,10 +28,10 @@ export function Spot() {
           >
             {saved ? "Unsave" : "Save"}
           </button>
-          <button type="button" className="btn btn-primary header-link">API: Location</button>
+          <button type="button" className="btn btn-primary header-link">{location}</button>
         </div>
         <div>
-          <span>"Hammock spot description"</span>
+          <span>{description}</span>
           <img
             src="https://thehammockexpert.com/wp-content/uploads/2018/01/how-to-hang-your-hammock-the-hammock-expert-3-1-768x512.jpg"
             height="100px"

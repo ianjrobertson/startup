@@ -11,6 +11,7 @@ import { Nav } from "react-bootstrap";
 import { AuthState } from "./main/login/authState";
 
 export default function App() {
+  const userName = localStorage.getItem("userName")
   return (
     <BrowserRouter>
       <main>
@@ -42,7 +43,7 @@ export default function App() {
                 Settings
               </NavLink>
             </button>
-            <p></p>
+            <p>{userName}</p>
             <img
               className="profile"
               src="IMG_1840.jpg"

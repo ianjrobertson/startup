@@ -86,14 +86,21 @@ apiRouter.post('/auth/login', async (req, res) => {
   //getSaved
   apiRouter.get('/saved', (req, res) => {
     const user = req.body.user;
-    res.status(200).send(savedPosts[user.email])
+    res.status(200).send({user: user, saved: savedPosts[user.email]})
   })
   
   //getLiked
   apiRouter.get('/liked', (req, res) => {
     const user = req.body.user;
-    res.status(200).send(likedPosts[user.email])
+    res.status(200).send({user: user, liked: likedPosts[user.email]})
   })
+
+// Get all posts for current user
+apiRouter.get('/posts', (req, res) => {
+  const user = req.query.user;
+  console.log(posts[user])
+  res.status(200).send({user: user, posts: posts[user]})
+})
   
 
 app.listen(port, () => {

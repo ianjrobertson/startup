@@ -15,7 +15,6 @@ export function CreateSpot() {
     const postID = uuidv4();
 
     try {
-      console.log("Made it to fetch");
       const response = await fetch('/api/createSpot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
