@@ -29,7 +29,7 @@ export function Saved() {
                   Use Map API: View Location
                 </a>
               </td>
-              <td class="delete-action">X</td>
+              <td className="delete-action">X</td>
             </tr>
             <tr>
               <td>
