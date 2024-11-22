@@ -10,13 +10,13 @@ export function Main() {
   return (
     <main>
       <Login
-                userName={userName}
-                authState={authState}
-                onAuthChange={(userName, authState) => {
-                  setAuthState(authState);
-                  setUserName(userName);
-                }}
-              />
+        userName={userName}
+        authState={authState}
+        onAuthChange={(userName, authState) => {
+          setAuthState(authState);
+          setUserName(userName);
+        }}
+      />
     </main>
   );
 }

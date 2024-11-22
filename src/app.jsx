@@ -8,6 +8,7 @@ import { CreateSpot } from "./createSpot/createSpot";
 import { Saved } from "./saved/saved";
 import { Settings } from "./settings/settings";
 import { Nav } from "react-bootstrap";
+import { AuthState } from "./main/login/authState";
 
 export default function App() {
   return (
@@ -41,7 +42,7 @@ export default function App() {
                 Settings
               </NavLink>
             </button>
-            <p>"Username"</p>
+            <p></p>
             <img
               className="profile"
               src="IMG_1840.jpg"

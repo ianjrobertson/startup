@@ -1,47 +1,36 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid'; 
+import { MessageDialog } from '../main/login/messageDialog'
 
 export function CreateSpot() {
-  const [formData, setFormData] = useState({
-    name: "",
-    location: "",
-    image: null,
-    description: "",
-  });
+  const userName = localStorage.getItem('userName')
 
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  }
-
-  // Handle file input change
-  function handleFileChange(event) {
-    setFormData((prevData) => ({
-      ...prevData,
-      image: event.target.files[0], // Save the file object
-    }));
-  }
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
+  const [displayError, setDisplayError] = React.useState(null);
 
   async function handleSubmit(event) {
-    const postData = new FormData();
+    event.preventDefault();
     const postID = uuidv4();
-    const authToken = 1;
-
-    postData.append('name', formData.name);
-    postData.append('location', formData.location);
-    postData.append('image', formData.image);
-    postData.append('description', formData.description);
-    postData.append('postID', postID);
-    postData.append('token', authToken);
 
     try {
-      const response = await fetch('/api/create', {
+      console.log("Made it to fetch");
+      const response = await fetch('/api/createSpot', {
         method: 'POST',
-        body: postData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({email : userName, name : name, location : location, description: description, postID: postID})
       });
+      if (!response.ok) {
+        console.error("Failed to create spot:", response.statusText);
+        return;
+      }
+      else {
+        const body = await response.json();
+        console.log(body)
+        const post = body.post;
+        setDisplayError(`${body.message}: Title:${post.name}, ID:${post.postID}`);
+      }
     } catch(error) {
       console.log(error);
     }
@@ -52,8 +41,6 @@ export function CreateSpot() {
       <h2>Create Hammock Spot Post</h2>
       <form
         onSubmit={handleSubmit} 
-        encType="multipart/form-data"
-        method="POST"
       >
         <label htmlFor="name">Spot Name</label>
         <input
@@ -61,8 +48,8 @@ export function CreateSpot() {
           id="name"
           name="name"
           placeholder="Enter the spot name"
-          value={formData.name}
-          onChange={handleChange}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
 
@@ -72,28 +59,27 @@ export function CreateSpot() {
           id="location"
           name="location"
           placeholder="Enter the location or click on the map"
-          value={formData.location}
-          onChange={handleChange}
+          value={location}
+          onChange={(e => setLocation(e.target.value))}
           required
         />
 
         <div>"Map API here"</div>
-
-        <label htmlFor="image">Upload Image</label>
-        <input type="file" id="image" name="image" accept="image/*" onChange={handleFileChange} required />
 
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
           name="description"
           placeholder="Describe the hammock spot"
-          value={formData.description}
-          onChange={handleChange}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
 
         <button type="submit">Post</button>
       </form>
+
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </main>
   );
 }
