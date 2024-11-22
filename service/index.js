@@ -13,6 +13,7 @@ let savedPosts = {};
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
     const user = users[req.body.email];
@@ -70,9 +71,9 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = Object.values(users).find((u) => u.token === req.body.token);
     if (user) {
       if (!likedPosts[user.email]) {
-        likedPosts[email] = new Set();
+        likedPosts[user.email] = new Set();
       }
-      likedPosts[email].add(postID);
+      likedPosts[user.email].add(req.body.postID);
     } else {
       return res.status(401).send({ error: "Invalid token or user not found" });
     }
@@ -104,7 +105,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
   
   //getLiked
-  apiRouter.get('/saved', (req, res) => {
+  apiRouter.get('/liked', (req, res) => {
     const user = Object.values(users).find((u) => u.token === req.body.token);
     if (user) {
       res.send(likedPosts[user.email])

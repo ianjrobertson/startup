@@ -28,6 +28,7 @@ export function CreateSpot() {
   async function handleSubmit(event) {
     const postData = new FormData();
     const postID = uuidv4();
+    const authToken = 1;
 
     postData.append('name', formData.name);
     postData.append('location', formData.location);
@@ -51,9 +52,10 @@ export function CreateSpot() {
       <h2>Create Hammock Spot Post</h2>
       <form
         onSubmit={handleSubmit} 
-        enctype="multipart/form-data"
+        encType="multipart/form-data"
+        method="POST"
       >
-        <label for="name">Spot Name</label>
+        <label htmlFor="name">Spot Name</label>
         <input
           type="text"
           id="name"
@@ -64,7 +66,7 @@ export function CreateSpot() {
           required
         />
 
-        <label for="location">Location</label>
+        <label htmlFor="location">Location</label>
         <input
           type="text"
           id="location"
@@ -77,10 +79,10 @@ export function CreateSpot() {
 
         <div>"Map API here"</div>
 
-        <label for="image">Upload Image</label>
-        <input type="file" id="image" name="image" accept="image/*" onChange={handleChange} required />
+        <label htmlFor="image">Upload Image</label>
+        <input type="file" id="image" name="image" accept="image/*" onChange={handleFileChange} required />
 
-        <label for="description">Description</label>
+        <label htmlFor="description">Description</label>
         <textarea
           id="description"
           name="description"
