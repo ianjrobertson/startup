@@ -51,3 +51,9 @@ I created components for each of the main pages, and added a router to allow acc
 I created a component for the basic hammock spot card that prevents code duplication. 
 Added Hook in hammock spot component that shows difference when liking and unliking a post. 
 
+## Service Deliverable
+I created an index.js file and added endpoints. I create and allow for logging into the app
+I created an endpoint that allows for creating a hammock spot, the location is selected using the google maps API
+The data is sent back to the home page and the hammock spots are rendered for the user. 
+I created a locationPicker and map components that integrate with google maps. Don't steal my API Key!
+
