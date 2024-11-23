@@ -33,16 +33,7 @@ export default function App() {
                 Notifications
               </NavLink>
             </button>
-            <button type="button" className="btn btn-primary header-link">
-              <NavLink className="btn-link" to="/saved">
-                Saved Spots
-              </NavLink>
-            </button>
-            <button type="button" className="btn btn-primary header-link">
-              <NavLink className="btn-link" to="/settings">
-                Settings
-              </NavLink>
-            </button>
+            
             <p>{userName}</p>
             <img
               className="profile"
@@ -78,3 +69,20 @@ export default function App() {
 function NotFound() {
     return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
   }
+
+
+  /**
+   * <button type="button" className="btn btn-primary header-link">
+              <NavLink className="btn-link" to="/saved">
+                Saved Spots
+              </NavLink>
+            </button>
+            <button type="button" className="btn btn-primary header-link">
+              <NavLink className="btn-link" to="/settings">
+                Settings
+              </NavLink>
+            </button>
+   * 
+   * 
+   * 
+   */
