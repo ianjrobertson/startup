@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PostMap from '../../maps/map';
 
 export function Spot({ name, location, description}) {
   const [liked, setLiked] = useState(false);
@@ -37,6 +38,7 @@ export function Spot({ name, location, description}) {
             height="100px"
             width="150px"
           />
+        <PostMap></PostMap>
         </div>
       </div>
     </div>

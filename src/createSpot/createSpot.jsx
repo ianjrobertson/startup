@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid'; 
 import { MessageDialog } from '../main/login/messageDialog'
+import LocationPicker from "../maps/locationPicker";
 
 export function CreateSpot() {
   const userName = localStorage.getItem('userName')
@@ -9,6 +10,7 @@ export function CreateSpot() {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [displayError, setDisplayError] = React.useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -63,7 +65,12 @@ export function CreateSpot() {
           required
         />
 
-        <div>"Map API here"</div>
+        <LocationPicker
+          onLocationSelect={(location) => {
+            console.log("Location selected: ", location);
+            setSelectedLocation(location);
+          }}
+        />
 
         <label htmlFor="description">Description</label>
         <textarea
