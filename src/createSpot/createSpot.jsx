@@ -20,7 +20,7 @@ export function CreateSpot() {
       const response = await fetch('/api/createSpot', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email : userName, name : name, location : location, description: description, postID: postID})
+        body: JSON.stringify({email : userName, name : name, location : selectedLocation, description: description, postID: postID})
       });
       if (!response.ok) {
         console.error("Failed to create spot:", response.statusText);
@@ -54,17 +54,7 @@ export function CreateSpot() {
           required
         />
 
-        <label htmlFor="location">Location</label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder="Enter the location or click on the map"
-          value={location}
-          onChange={(e => setLocation(e.target.value))}
-          required
-        />
-
+        <label>Select Location on Map</label>
         <LocationPicker
           onLocationSelect={(location) => {
             console.log("Location selected: ", location);

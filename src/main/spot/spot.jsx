@@ -29,7 +29,6 @@ export function Spot({ name, location, description}) {
           >
             {saved ? "Unsave" : "Save"}
           </button>
-          <button type="button" className="btn btn-primary header-link">{location}</button>
         </div>
         <div>
           <span>{description}</span>
@@ -38,7 +37,9 @@ export function Spot({ name, location, description}) {
             height="100px"
             width="150px"
           />
-        <PostMap></PostMap>
+        <PostMap
+          location={location}
+        />
         </div>
       </div>
     </div>
