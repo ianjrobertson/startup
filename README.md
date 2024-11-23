@@ -56,4 +56,5 @@ I created an index.js file and added endpoints. I create and allow for logging i
 I created an endpoint that allows for creating a hammock spot, the location is selected using the google maps API
 The data is sent back to the home page and the hammock spots are rendered for the user. 
 I created a locationPicker and map components that integrate with google maps. Don't steal my API Key!
+Instruction: Log in, go to create, make a post, make sure to click the map, go back to home, post will be there. 
 
