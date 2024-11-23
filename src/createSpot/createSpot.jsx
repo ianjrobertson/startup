@@ -55,12 +55,15 @@ export function CreateSpot() {
         />
 
         <label>Select Location on Map</label>
-        <LocationPicker
-          onLocationSelect={(location) => {
-            console.log("Location selected: ", location);
-            setSelectedLocation(location);
-          }}
-        />
+        <div className="location">
+          <LocationPicker
+            onLocationSelect={(location) => {
+              console.log("Location selected: ", location);
+              setSelectedLocation(location);
+            }}
+          />
+        </div>
+        
 
         <label htmlFor="description">Description</label>
         <textarea

@@ -30,17 +30,9 @@ export function Spot({ name, location, description}) {
             {saved ? "Unsave" : "Save"}
           </button>
         </div>
-        <div>
-          <span>{description}</span>
-          <img
-            src="https://thehammockexpert.com/wp-content/uploads/2018/01/how-to-hang-your-hammock-the-hammock-expert-3-1-768x512.jpg"
-            height="100px"
-            width="150px"
-          />
         <PostMap
           location={location}
         />
-        </div>
       </div>
     </div>
   );

@@ -23,6 +23,11 @@ function PostMap({ location }) {
       mapContainerStyle={mapContainerStyle}
       zoom={14}
       center={location || center}
+      options={{
+        streetViewControl: false, // Hides the Street View button
+        fullscreenControl: false, // Hides the Fullscreen button
+        zoomControl: false,
+      }}
     >
       {location && <Marker position={location} />}
     </GoogleMap>

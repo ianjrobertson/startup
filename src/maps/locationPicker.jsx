@@ -56,17 +56,17 @@ function LocationPicker({ onLocationSelect }) {
   if (!isLoaded) return <div>Loading Google Maps...</div>;
 
   return (
-    <div>
+    <div style={mapContainerStyle}>
       <GoogleMap
-        mapContainerStyle={mapContainerStyle}
+        mapContainerStyle={{ width: "100%", height: "100%" }}
         center={mapCenter} // Fix map center (do not change based on zoom/pan)
-        zoom={12}
+        zoom={14}
         onClick={handleMapClick} // Add event handler for map click
         options={{
-          mapTypeControl: false, // Hides the Map/Satellite toggle
+            mapTypeControl: false,
           streetViewControl: false, // Hides the Street View button
           fullscreenControl: false, // Hides the Fullscreen button
-          zoomControlOptions: false,
+          zoomControl: false,
           minZoom: 3, // Optional: restrict zoom levels
           maxZoom: 18,
         }}
