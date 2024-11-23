@@ -3,7 +3,9 @@ const uuid = require('uuid');
 const app = express();
 app.use(express.json());
 
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+app.use(express.static('public'));
+
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 let users = {}; // We will replace this cached value with db in the next phase. 
 let posts = {};
