@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
@@ -11,7 +11,7 @@ import { Nav } from "react-bootstrap";
 import { AuthState } from "./main/login/authState";
 
 export default function App() {
-  const userName = localStorage.getItem("userName")
+  const [userName, setUserName] = useState(localStorage.getItem('userName'))
   return (
     <BrowserRouter>
       <main>
