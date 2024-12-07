@@ -1,6 +1,8 @@
 import React from "react";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 
+const data = require("./mapsConfig.json")
+
 const mapContainerStyle = {
   width: "100%",
   height: "250px",
@@ -13,7 +15,7 @@ const center = {
 
 function PostMap({ location }) {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCMB3K5ZPZl_jcx2jhh2M0yAn48kHa4Faw",
+    googleMapsApiKey: data.apiKey,
   });
 
   if (!isLoaded) return <div>Loading Map...</div>;

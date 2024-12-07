@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+const data = require("./mapsConfig.json")
 
 // Map container style
 const mapContainerStyle = {
@@ -20,7 +21,7 @@ function LocationPicker({ onLocationSelect }) {
 
   // Load the Google Maps API
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCMB3K5ZPZl_jcx2jhh2M0yAn48kHa4Faw",
+    googleMapsApiKey: data.apiKey,
   });
 
   useEffect(() => {
