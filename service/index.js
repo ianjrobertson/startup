@@ -14,11 +14,6 @@ const authCookieName = 'token';
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
-let users = {}; // We will replace this cached value with db in the next phase. 
-let posts = {};
-let likedPosts = {};
-let savedPosts = {};
-
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
