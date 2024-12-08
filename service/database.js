@@ -8,6 +8,8 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
 const postCollection = db.collection('post');
+const likedPostCollection = db.collection('liked');
+const savedPostCollection = db.collection('saved');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {

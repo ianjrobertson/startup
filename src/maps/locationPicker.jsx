@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-const data = require("./mapsConfig.json")
+import data from "./mapsConfig.json"
 
 // Map container style
 const mapContainerStyle = {
