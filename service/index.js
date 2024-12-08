@@ -92,17 +92,16 @@ apiRouter.post('/auth/login', async (req, res) => {
   //savePost
   apiRouter.post('/save', async (req, res) => {
     const user = req.body.user;
-    if (!savedPosts[user.email]) {
-      savedPosts[email] = new Set();
-    }
-    savedPosts[email].add(postID);
+    const postID = req.body.postID;
+    await DB.savePost(user, postID);
     res.status(200).send({ message: "Post Liked successfully" });
   })
 
   //getSaved
   apiRouter.get('/saved', (req, res) => {
     const user = req.body.user;
-    res.status(200).send({user: user, saved: savedPosts[user.email]})
+    const saved = DB.getSaved(user)
+    res.status(200).send({user: user, saved: saved})
   })
   
   //getLiked
