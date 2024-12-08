@@ -51,10 +51,29 @@ function getPosts(user) {
   return postCollection.find({user: user}).toArray();
 }
 
+async function likePost(user, postID) {
+  const likedPost = {
+    user: user,
+    postID: postID
+  }
+  await likedPostCollection.insertOne(likedPost);
+  return likedPost
+}
+
+async function getLiked(user) {
+  return likedPostCollection.find({user: user}).toArray();
+}
+
+function savePost(user, postID) {
+
+}
+
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
   createSpot,
   getPosts,
+  likePost,
+  getLiked,
 };

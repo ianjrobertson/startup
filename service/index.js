@@ -84,10 +84,8 @@ apiRouter.post('/auth/login', async (req, res) => {
   //likePost
   apiRouter.post('/like', async (req, res) => {
     const user = req.body.user;
-    if (!likedPosts[user.email]) {
-      likedPosts[user.email] = new Set();
-    }
-    likedPosts[user.email].add(req.body.postID);
+    const postID = req.body.postID;
+    await DB.likePost(user, postID)
     res.status(200).send({ message: "Post Liked successfully" });
   })
 
@@ -110,7 +108,8 @@ apiRouter.post('/auth/login', async (req, res) => {
   //getLiked
   apiRouter.get('/liked', (req, res) => {
     const user = req.body.user;
-    res.status(200).send({user: user, liked: likedPosts[user.email]})
+    const liked = DB.getLiked(user);
+    res.status(200).send({user: user, liked: liked})
   })
 
 // Get all posts for current user
