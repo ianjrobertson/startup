@@ -42,8 +42,19 @@ async function createUser(email, password) {
   return user;
 }
 
+async function createSpot(post) {
+  await postCollection.insertOne(post)
+  return post;
+}
+
+function getPosts(user) {
+  return postCollection.find({user: user}).toArray();
+}
+
 module.exports = {
   getUser,
   getUserByToken,
   createUser,
+  createSpot,
+  getPosts,
 };

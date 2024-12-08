@@ -32,19 +32,19 @@ export function Authenticated(props) {
         });
 
         if (response.ok) {
+          console.log("got posts")
           const data = await response.json();
+          console.log(data.posts)
           if (!data.posts) {
-
+            console.log("nothing")
           }
           setPosts(data.posts); 
           console.log(data);
         } else {
           console.error("Failed to fetch posts:", response.statusText);
-          setError("Failed to fetch posts."); 
         }
       } catch (err) {
         console.error("Fetch error:", err);
-        setError("An error occurred while fetching posts."); 
       }
     }
 

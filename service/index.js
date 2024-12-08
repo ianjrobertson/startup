@@ -19,7 +19,7 @@ let posts = {};
 let likedPosts = {};
 let savedPosts = {};
 
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 
@@ -29,7 +29,7 @@ apiRouter.post('/auth/create', async (req, res) => {
       res.status(409).send({ msg: 'Existing user' });
     } else {
       const user = await DB.createUser(req.body.email, req.body.password);
-
+      setAuthCookie(res, user.token)
       res.status(200).send({
         id: user._id,
       });
@@ -46,8 +46,8 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = await DB.getUser(req.body.email);
     if (user) {
       if (await bcrypt.compare(req.body.password, user.password)) {
-        //setAuthCookie(res, user.token);
-        res.send({ id: user._id})
+        setAuthCookie(res, user.token);
+        res.status(200).send({ id: user._id})
         return;
       }
     }
@@ -63,7 +63,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (user) {
       next();
     } else {
-      res.status(401).send({ msg: 'Unauthorized' });
+      res.status(401).send({ msg: 'Unauthorized - Cookie' });
     }
   });
 
@@ -72,14 +72,13 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = req.body.email;
     let post = {user: user, postID: req.body.postID, name: req.body.name, location: req.body.location, description: req.body.description}
     console.log(post);
-      if (posts[user]) {
-        posts[user].push(post)
-      }
-      else {
-        posts[user] = []
-        posts[user].push(post)
-      }
-    res.status(200).send({ message: "Post created successfully", post: post});
+    try {
+      await DB.createSpot(post)
+    } catch(error) {
+      console.log(error)
+    } finally {
+      res.status(200).send({ message: "Post created successfully", post: post});
+    }
   })
 
   //likePost
@@ -115,12 +114,22 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
 // Get all posts for current user
-apiRouter.get('/posts', (req, res) => {
+apiRouter.get('/posts', async (req, res) => {
   const user = req.query.user;
-  console.log(posts[user])
-  res.status(200).send({user: user, posts: posts[user]})
+  console.log(user)
+  const posts = await DB.getPosts(user)
+  console.log(posts)
+  res.status(200).send({user: user, posts: posts})
 })
   
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
