@@ -110,13 +110,13 @@ apiRouter.post('/auth/login', async (req, res) => {
 secureApiRouter.get('/posts', async (req, res) => {
   const user = req.query.user;
   console.log(user)
-  const posts = await DB.getPosts(user)
+  const posts = await (await DB.getPosts(user)).reverse();
   console.log(posts)
   res.status(200).send({user: user, posts: posts})
 })
 
 secureApiRouter.get('/allPosts', async (req, res) => {
-  const posts = await DB.getAllPosts();
+  const posts = (await DB.getAllPosts()).reverse();
   res.status(200).send({posts: posts});
 })
   

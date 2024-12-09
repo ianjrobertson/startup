@@ -64,6 +64,7 @@ export function Authenticated(props) {
             location={post.location}
             description={post.description}
             user={post.user}
+            id={post.postID}
           />
         ))
         }
