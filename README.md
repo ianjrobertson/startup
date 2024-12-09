@@ -56,5 +56,10 @@ I created an index.js file and added endpoints. I create and allow for logging i
 I created an endpoint that allows for creating a hammock spot, the location is selected using the google maps API
 The data is sent back to the home page and the hammock spots are rendered for the user. 
 I created a locationPicker and map components that integrate with google maps. Don't steal my API Key!
-Instruction: Log in, go to create, make a post, make sure to click the map, go back to home, post will be there. 
+Instruction: Log in, go to create, make a post, make sure to click the map, go back to home, post will be there.
+
+## Login Deliverable
+I added a database.js file that contains all of the interface between the database and the backend. I mostly followed what was done in Simon example. 
+I updated my index.js file to call these database functions instead of storing the information in the index.js file. 
+For this deliverable I also made some updates to my gitignore to be sure my API keys and mongodb login was not accessible in github. 
 
