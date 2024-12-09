@@ -63,7 +63,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   });
 
   //createPost
-  apiRouter.post('/createSpot', async (req, res) => {
+  secureApiRouter.post('/createSpot', async (req, res) => {
     const user = req.body.email;
     let post = {user: user, postID: req.body.postID, name: req.body.name, location: req.body.location, description: req.body.description}
     console.log(post);
@@ -77,7 +77,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
   //likePost
-  apiRouter.post('/like', async (req, res) => {
+  secureApiRouter.post('/like', async (req, res) => {
     const user = req.body.user;
     const postID = req.body.postID;
     await DB.likePost(user, postID)
@@ -85,7 +85,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
   //savePost
-  apiRouter.post('/save', async (req, res) => {
+  secureApiRouter.post('/save', async (req, res) => {
     const user = req.body.user;
     const postID = req.body.postID;
     await DB.savePost(user, postID);
@@ -93,26 +93,31 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
   //getSaved
-  apiRouter.get('/saved', (req, res) => {
+  secureApiRouter.get('/saved', (req, res) => {
     const user = req.body.user;
     const saved = DB.getSaved(user)
     res.status(200).send({user: user, saved: saved})
   })
   
   //getLiked
-  apiRouter.get('/liked', (req, res) => {
+  secureApiRouter.get('/liked', (req, res) => {
     const user = req.body.user;
     const liked = DB.getLiked(user);
     res.status(200).send({user: user, liked: liked})
   })
 
 // Get all posts for current user
-apiRouter.get('/posts', async (req, res) => {
+secureApiRouter.get('/posts', async (req, res) => {
   const user = req.query.user;
   console.log(user)
   const posts = await DB.getPosts(user)
   console.log(posts)
   res.status(200).send({user: user, posts: posts})
+})
+
+secureApiRouter.get('/allPosts', async (req, res) => {
+  const posts = await DB.getAllPosts();
+  res.status(200).send({posts: posts});
 })
   
 function setAuthCookie(res, authToken) {

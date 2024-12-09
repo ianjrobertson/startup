@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import PostMap from '../../maps/map';
 
-export function Spot({ name, location, description}) {
+export function Spot({ name, location, description, user}) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
-  const userName = localStorage.getItem("userName");
 
   const toggleLike = () => setLiked((prevLiked) => !prevLiked);
   const toggleSave = () => setSaved((prevSaved) => !prevSaved);
@@ -13,8 +12,7 @@ export function Spot({ name, location, description}) {
     <div>
       <div className="card">
         <div>
-          <img className="profile" src="IMG_1840.jpg" height="30px" width="35px" />
-          <span>{userName}</span>
+          <span>Created by: {user}</span>
           <button 
             type="button" 
             className="btn btn-primary header-link" 
@@ -33,6 +31,12 @@ export function Spot({ name, location, description}) {
         <PostMap
           location={location}
         />
+        <div>
+          <span>Title: {name}</span>
+        </div>
+        <div>
+          <span>Description: {description}</span>
+        </div>
       </div>
     </div>
   );

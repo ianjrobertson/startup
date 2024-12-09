@@ -51,6 +51,10 @@ function getPosts(user) {
   return postCollection.find({user: user}).toArray();
 }
 
+function getAllPosts() {
+  return postCollection.find({}).toArray();
+}
+
 async function likePost(user, postID) {
   const likedPost = {
     user: user,
@@ -87,4 +91,5 @@ module.exports = {
   getLiked,
   savePost,
   getSaved,
+  getAllPosts,
 };
