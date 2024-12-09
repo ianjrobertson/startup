@@ -21,17 +21,35 @@ export function Spot({ name, location, description, user, id}) {
       if (!response.ok) {
         console.error("Failed to like the spot", response.statusText);
       } else {
-        console.log("Post liked!")
+        const body = await response.json()
+        console.log(body)
         toggleLike()
       }
     } catch(error) {
       console.log(error)
     }
-    
   }
 
   async function save() {
-
+    const currentUser = localStorage.getItem("userName");
+    try {
+      const response = await fetch(`/api/save`, {
+        method: "POST",
+        body: JSON.stringify({ user: currentUser, postID: id }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+      if (!response.ok) {
+        console.error("Failed to like the spot", response.statusText);
+      } else {
+        const body = await response.json()
+        console.log(body)
+        toggleSave()
+      }
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -49,7 +67,7 @@ export function Spot({ name, location, description, user, id}) {
           <button 
             type="button" 
             className="btn btn-primary header-link" 
-            onClick={toggleSave}
+            onClick={save}
           >
             {saved ? "Unsave" : "Save"}
           </button>

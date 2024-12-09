@@ -89,7 +89,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     const user = req.body.user;
     const postID = req.body.postID;
     await DB.savePost(user, postID);
-    res.status(200).send({ message: "Post Liked successfully" });
+    res.status(200).send({ message: "Post Saved successfully" });
   })
 
   //getSaved
