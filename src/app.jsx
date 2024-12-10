@@ -12,7 +12,6 @@ import { Nav } from "react-bootstrap";
 import { AuthState } from "./main/login/authState";
 
 export default function App() {
-  const [userName, setUserName] = useState(localStorage.getItem('userName'))
   return (
     <BrowserRouter>
       <main>

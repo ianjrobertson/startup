@@ -6,7 +6,8 @@ import { Spot } from '../spot/spot';
 import Button from 'react-bootstrap/Button'
 
 export function Authenticated(props) {
-  const userName = localStorage.getItem('userName')
+  const userName = props.userName;
+  console.log(userName);
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]); 
 
