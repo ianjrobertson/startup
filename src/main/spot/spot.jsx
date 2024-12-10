@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PostMap from '../../maps/map';
+import { HangspotEvent, notifier } from '../../notifications/notifier';
 
 export function Spot({ name, location, description, user, id}) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
+  const userName = localStorage.getItem('userName')
 
   const toggleLike = () => setLiked((prevLiked) => !prevLiked);
   const toggleSave = () => setSaved((prevSaved) => !prevSaved);
@@ -24,6 +26,7 @@ export function Spot({ name, location, description, user, id}) {
         const body = await response.json()
         console.log(body)
         toggleLike()
+        notifier.broadcastEvent(userName, HangspotEvent.Like, {user: userName, creator: user, name})
       }
     } catch(error) {
       console.log(error)
@@ -46,6 +49,8 @@ export function Spot({ name, location, description, user, id}) {
         const body = await response.json()
         console.log(body)
         toggleSave()
+        notifier.broadcastEvent(userName, HangspotEvent.Save, {user: userName, creator: user, name})
+
       }
     } catch(error) {
       console.log(error)

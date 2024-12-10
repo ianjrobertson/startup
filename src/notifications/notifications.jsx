@@ -23,17 +23,16 @@ export function Notifications() {
     for (const [i, event] of events.entries()) {
       let message = 'unknown';
       if (event.type === HangspotEvent.Like) {
-        message = `liked ${event.value.user}`;
+        message = `${event.value.user} liked ${event.value.creator}'s spot: ${event.value.name}`;
       } else if (event.type === HangspotEvent.Save) {
-        message = `saved ${event.value.title}`;
+        message = `${event.value.user} saved ${event.value.creator}'s spot: ${event.value.name}`;
       } else if (event.type === HangspotEvent.Spot) {
-        message = `made new spot`;
+        message = `${event.value.user} made new spot: ${event.value.name}`;
       } else if (event.type === HangspotEvent.System) {
         message = event.value.msg;
       }
       messageArray.push(
         <div key={i}>
-          <span>{event.from.split('@')[0]}</span>
           {message}
         </div>
       )
@@ -43,7 +42,7 @@ export function Notifications() {
   return (
     <div>
       <span>{userName}</span> 
-      <div>{createMessageArray}</div>
+      <div>{createMessageArray()}</div>
     </div>
   );
 }

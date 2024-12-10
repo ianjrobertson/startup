@@ -36,7 +36,7 @@ class Notifier {
     }
 
     broadcastEvent(from, type, value) {
-        const event = new HangspotEvent(from, type, value);
+        const event = new EventMessage(from, type, value);
         this.socket.send(JSON.stringify(event));
     }
 

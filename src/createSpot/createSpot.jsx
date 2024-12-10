@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid'; 
 import { MessageDialog } from '../main/login/messageDialog'
 import LocationPicker from "../maps/locationPicker";
-
+import { HangspotEvent, notifier } from "../notifications/notifier";
 export function CreateSpot() {
   const userName = localStorage.getItem('userName')
 
@@ -31,6 +31,7 @@ export function CreateSpot() {
         console.log(body)
         const post = body.post;
         setDisplayError(`${body.message}: Title:${post.name}, ID:${post.postID}`);
+        notifier.broadcastEvent(userName, HangspotEvent.Spot, {name: post.name, user: post.user});
       }
     } catch(error) {
       console.log(error);
