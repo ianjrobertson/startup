@@ -63,3 +63,6 @@ I added a database.js file that contains all of the interface between the databa
 I updated my index.js file to call these database functions instead of storing the information in the index.js file. 
 For this deliverable I also made some updates to my gitignore to be sure my API keys and mongodb login was not accessible in github. 
 
+## WebSocket Deliverable
+In this deliverable, I added a live feed of notifications occuring when users create,like,or save hangspot posts. To see this in action, open two hangspot apps in different web browsers, look at the notification tab in one, then interact with the app in the other browser. Note, this doesn't work in the same browser because of cookies. I added a peerProxy file that allows for http connections to be upgraded to websocket connections when the server is connected to. I also implemented and integrated the liked, and saved features for posts. I added the saved posts tab to see these posts. 
+
