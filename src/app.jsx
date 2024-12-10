@@ -30,12 +30,17 @@ export default function App() {
             </button>
             <button type="button" className="btn btn-primary header-link">
               <NavLink className="btn-link" to="/myPosts">
-                My Posts
+                My Spots
               </NavLink>
             </button>
             <button type="button" className="btn btn-primary header-link">
               <NavLink className="btn-link" to="/notifications">
                 Notifications
+              </NavLink>
+            </button>
+            <button type="button" className="btn btn-primary header-link">
+              <NavLink className="btn-link" to="/saved">
+                Saved Spots
               </NavLink>
             </button>
           </nav>

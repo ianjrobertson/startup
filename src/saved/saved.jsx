@@ -1,71 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Spot } from '../main/spot/spot';
 
-export function Saved() {
+
+import Button from 'react-bootstrap/Button'
+
+export function Saved(props) {
+  const userName = localStorage.getItem('userName')
+  const navigate = useNavigate();
+  const [posts, setPosts] = useState([]); 
+
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(`/api/saved?user=${encodeURIComponent(userName)}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (!data.saved) {
+            console.log("nothing")
+          }
+          setPosts(data.saved); 
+        } else {
+          console.error("Failed to fetch posts:", response.statusText);
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    }
+
+    fetchPosts();
+  }, [userName]);
+
   return (
-    <main>
-      <h2>From Database: Saved Spots</h2>
-      <div className="saved-container">
-        <table className="saved-table">
-          <thead>
-            <tr>
-              <th>Hammock Spot</th>
-              <th>Username</th>
-              <th>Location</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <img
-                  src="https://thehammockexpert.com/wp-content/uploads/2018/01/how-to-hang-your-hammock-the-hammock-expert-3-1-768x512.jpg"
-                  alt="Hammock Spot"
-                  width="100"
-                />
-              </td>
-              <td>"Username here"</td>
-              <td>
-                <a href="https://maps.google.com" target="_blank">
-                  Use Map API: View Location
-                </a>
-              </td>
-              <td className="delete-action">X</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://thehammockexpert.com/wp-content/uploads/2018/01/how-to-hang-your-hammock-the-hammock-expert-3-1-768x512.jpg"
-                  alt="Hammock Spot"
-                  width="100"
-                />
-              </td>
-              <td>"Username here"</td>
-              <td>
-                <a href="https://maps.google.com" target="_blank">
-                  Use Map API: View Location
-                </a>
-              </td>
-              <td className="delete-action">X</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://thehammockexpert.com/wp-content/uploads/2018/01/how-to-hang-your-hammock-the-hammock-expert-3-1-768x512.jpg"
-                  alt="Hammock Spot"
-                  width="100"
-                />
-              </td>
-              <td>"Username name"</td>
-              <td>
-                <a href="https://maps.google.com" target="_blank">
-                  Use Map API: View Location
-                </a>
-              </td>
-              <td className="delete-action">X</td>
-            </tr>
-          </tbody>
-        </table>
+    <div>
+      <div>
+        {posts?.length > 0 && posts.map((post) => (
+          <Spot
+            key={post.postID}
+            name={post.name}
+            location={post.location}
+            description={post.description}
+            user={post.user}
+          />
+        ))
+        }
+        {posts?.length == 0 && <div>No posts available</div>}
       </div>
-    </main>
+    </div>
   );
 }

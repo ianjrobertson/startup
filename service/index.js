@@ -93,9 +93,10 @@ apiRouter.post('/auth/login', async (req, res) => {
   })
 
   //getSaved
-  secureApiRouter.get('/saved', (req, res) => {
-    const user = req.body.user;
-    const saved = DB.getSaved(user)
+  secureApiRouter.get('/saved', async (req, res) => {
+    const user = req.query.user;
+    const saved = await DB.getSaved(user)
+    console.log(saved);
     res.status(200).send({user: user, saved: saved})
   })
   
@@ -109,7 +110,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 // Get all posts for current user
 secureApiRouter.get('/posts', async (req, res) => {
   const user = req.query.user;
-  const posts = await (await DB.getPosts(user)).reverse();
+  const posts = (await DB.getPosts(user)).reverse();
   res.status(200).send({user: user, posts: posts})
 })
 

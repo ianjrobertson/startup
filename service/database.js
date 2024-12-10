@@ -51,6 +51,10 @@ function getPosts(user) {
   return postCollection.find({user: user}).toArray();
 }
 
+function getPost(postID) {
+  return postCollection.findOne({postID: postID})
+}
+
 function getAllPosts() {
   return postCollection.find({}).toArray();
 }
@@ -77,8 +81,17 @@ async function savePost(user, postID) {
   return savedPost;
 }
 
-function getSaved(user) {
-  return savedPostCollection.find({user: user}).toArray();
+async function getSaved(user) {
+  const saved = await savedPostCollection.find({ user: user }).toArray();
+  const savedList = [];
+
+  for (const element of saved) {
+    const post = await getPost(element.postID); 
+    savedList.push(post);
+  }
+
+  console.log(savedList); 
+  return savedList; 
 }
 
 module.exports = {
