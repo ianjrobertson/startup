@@ -3,7 +3,7 @@ import React from 'react';
 export function Notifications() {
   return (
     <main>
-      <h2>Notifications: Updated by Websocket</h2>
+      <h2>Notifications</h2>
     <div className="notification-table">
       <table>
         <thead>
