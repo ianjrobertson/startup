@@ -38,6 +38,7 @@ export function Created(props) {
 
   return (
     <div>
+      <h2>My Spots</h2>
       <div>
         {posts?.length > 0 && posts.map((post) => (
           <Spot

@@ -50,6 +50,8 @@ export function Authenticated(props) {
 
   return (
     <div>
+      <h2>Home Page</h2>
+      <span>{userName}</span>
       <Button variant='secondary' onClick={() => logout()}>
         Logout
       </Button>

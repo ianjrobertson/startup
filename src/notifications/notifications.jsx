@@ -41,6 +41,8 @@ export function Notifications() {
   }
   return (
     <div>
+      <h2>Notifications</h2>
+      <div>This page contains a live feed of users making and interacting with spots</div>
       <span>{userName}</span> 
       <div>{createMessageArray()}</div>
     </div>

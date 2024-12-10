@@ -38,6 +38,7 @@ export function Saved(props) {
 
   return (
     <div>
+      <h2>Saved Spots</h2>
       <div>
         {posts?.length > 0 && posts.map((post) => (
           <Spot
