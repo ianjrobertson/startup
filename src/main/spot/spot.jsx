@@ -24,7 +24,6 @@ export function Spot({ name, location, description, user, id}) {
         console.error("Failed to like the spot", response.statusText);
       } else {
         const body = await response.json()
-        console.log(body)
         toggleLike()
         notifier.broadcastEvent(userName, HangspotEvent.Like, {user: userName, creator: user, name})
       }
@@ -46,8 +45,7 @@ export function Spot({ name, location, description, user, id}) {
       if (!response.ok) {
         console.error("Failed to like the spot", response.statusText);
       } else {
-        const body = await response.json()
-        console.log(body)
+        const body = await response.json();
         toggleSave()
         notifier.broadcastEvent(userName, HangspotEvent.Save, {user: userName, creator: user, name})
 

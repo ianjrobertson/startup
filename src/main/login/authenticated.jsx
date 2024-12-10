@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button'
 
 export function Authenticated(props) {
   const userName = props.userName;
-  console.log(userName);
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]); 
 
@@ -33,14 +32,11 @@ export function Authenticated(props) {
         });
 
         if (response.ok) {
-          console.log("got posts")
           const data = await response.json();
-          console.log(data.posts)
           if (!data.posts) {
             console.log("nothing")
           }
           setPosts(data.posts); 
-          console.log(data);
         } else {
           console.error("Failed to fetch posts:", response.statusText);
         }

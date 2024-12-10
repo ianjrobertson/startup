@@ -28,7 +28,6 @@ export function CreateSpot() {
       }
       else {
         const body = await response.json();
-        console.log(body)
         const post = body.post;
         setDisplayError(`${body.message}: Title:${post.name}, ID:${post.postID}`);
         notifier.broadcastEvent(userName, HangspotEvent.Spot, {name: post.name, user: post.user});

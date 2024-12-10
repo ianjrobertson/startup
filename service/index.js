@@ -67,7 +67,6 @@ apiRouter.post('/auth/login', async (req, res) => {
   secureApiRouter.post('/createSpot', async (req, res) => {
     const user = req.body.email;
     let post = {user: user, postID: req.body.postID, name: req.body.name, location: req.body.location, description: req.body.description}
-    console.log(post);
     try {
       await DB.createSpot(post)
     } catch(error) {
@@ -110,9 +109,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 // Get all posts for current user
 secureApiRouter.get('/posts', async (req, res) => {
   const user = req.query.user;
-  console.log(user)
   const posts = await (await DB.getPosts(user)).reverse();
-  console.log(posts)
   res.status(200).send({user: user, posts: posts})
 })
 
