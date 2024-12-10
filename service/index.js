@@ -80,23 +80,31 @@ apiRouter.post('/auth/login', async (req, res) => {
   secureApiRouter.post('/like', async (req, res) => {
     const user = req.body.user;
     const postID = req.body.postID;
-    await DB.likePost(user, postID)
-    res.status(200).send({ message: "Post Liked successfully" });
+    try {
+      await DB.likePost(user, postID)
+      res.status(200).send({ message: "Post Liked successfully" });
+    } catch (error) {
+      res.status(409).send({message: error.message});
+    }
+    
   })
 
   //savePost
   secureApiRouter.post('/save', async (req, res) => {
     const user = req.body.user;
     const postID = req.body.postID;
-    await DB.savePost(user, postID);
-    res.status(200).send({ message: "Post Saved successfully" });
+    try {
+      await DB.savePost(user, postID);
+      res.status(200).send({ message: "Post Saved successfully" });
+    } catch (error) {
+      res.status(409).send({message: error.message});
+    }
   })
 
   //getSaved
   secureApiRouter.get('/saved', async (req, res) => {
     const user = req.query.user;
     const saved = await DB.getSaved(user)
-    console.log(saved);
     res.status(200).send({user: user, saved: saved})
   })
   

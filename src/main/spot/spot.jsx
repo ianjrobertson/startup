@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PostMap from '../../maps/map';
 import { HangspotEvent, notifier } from '../../notifications/notifier';
+import { MessageDialog } from '../login/messageDialog';
 
 export function Spot({ name, location, description, user, id}) {
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [displayError, setDisplayError] = React.useState(null);
   const userName = localStorage.getItem('userName')
 
   const toggleLike = () => setLiked((prevLiked) => !prevLiked);
@@ -21,11 +23,13 @@ export function Spot({ name, location, description, user, id}) {
         },
       })
       if (!response.ok) {
-        console.error("Failed to like the spot", response.statusText);
+        const body = await response.json()
+        setDisplayError(body.message);
       } else {
         const body = await response.json()
-        toggleLike()
+        //toggleLike()
         notifier.broadcastEvent(userName, HangspotEvent.Like, {user: userName, creator: user, name})
+        setDisplayError(body.message)
       }
     } catch(error) {
       console.log(error)
@@ -43,11 +47,13 @@ export function Spot({ name, location, description, user, id}) {
         },
       })
       if (!response.ok) {
-        console.error("Failed to like the spot", response.statusText);
+        const body = await response.json()
+        setDisplayError(body.message);
       } else {
         const body = await response.json();
-        toggleSave()
+        //toggleSave()
         notifier.broadcastEvent(userName, HangspotEvent.Save, {user: userName, creator: user, name})
+        setDisplayError(body.message)
 
       }
     } catch(error) {
@@ -85,6 +91,8 @@ export function Spot({ name, location, description, user, id}) {
           <span>Description: {description}</span>
         </div>
       </div>
+
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </div>
   );
 }

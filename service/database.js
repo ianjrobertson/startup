@@ -64,8 +64,12 @@ async function likePost(user, postID) {
     user: user,
     postID: postID
   }
-  await likedPostCollection.insertOne(likedPost);
-  return likedPost
+  if (await likedPostCollection.findOne(likedPost)) {
+    throw new Error('Post already liked')
+  } else {
+    await likedPostCollection.insertOne(likedPost);
+    return likedPost
+  } 
 }
 
 async function getLiked(user) {
@@ -77,8 +81,13 @@ async function savePost(user, postID) {
     user: user,
     postID: postID
   }
-  await savedPostCollection.insertOne(savedPost);
-  return savedPost;
+  if (await savedPostCollection.findOne(savedPost)) {
+    throw new Error("Post already saved");
+  }
+  else {
+    await savedPostCollection.insertOne(savedPost);
+    return savedPost;
+  }
 }
 
 async function getSaved(user) {
@@ -89,8 +98,6 @@ async function getSaved(user) {
     const post = await getPost(element.postID); 
     savedList.push(post);
   }
-
-  console.log(savedList); 
   return savedList; 
 }
 
