@@ -14,8 +14,8 @@ In this deliverable, I created the skeleton of my startup webpage. I created a l
 
 I implemented the basic design of my webpage I created for the first deliverable. My websocket will be implemeted by a notifications page. My database will hold persistent data for the posts and userinfo. I will use a third party map API to handle location logic. 
 
-## Midterm Review Notes:
-# Questions:
+# Midterm Review Notes:
+## Questions:
   - In the following code, what does the link element do?
       - <link> defines the relationship between a doucment and an external resource, usually a stylesheet
   - In the following code,  what does a div tag do?
@@ -235,3 +235,46 @@ Delete a record
 
 ### Response codes
 - 200 OK
+
+# Final Review
+## Questions
+- Default ports:
+  - HTTP: 80
+  - HTTPS: 443
+  - SSH: 22
+- Codes:
+  - 200: Okay good!
+  - 300: Multiple Choices status code
+  - 400: Bad Request
+  - 500: Server Error
+- What does `conent-type` allow you to do?
+  - Specify the MIME type. What is being sent or displayed.
+- Cookie?
+  - `secure-cookie` only sent over HTTPS connections.
+  - `HttpOnly` Not accessible by JavaScript.
+  - `SameSite-cookie` Controls if cookies are sent with cross-site requests. strict, lax, or none
+- Passwords:
+  - Store through hashing and salting.
+- Websocket Protocol provides peer-to-peer communication. Real-time low-latency connection over a TCP communication
+- Acronyms:
+  - `JSX` Javascript XML
+  - `JS` Javascript
+  - `AWS` Amazon Web Service
+  - `npm` Node package Manager
+  - `nvm` Node Version Manager
+- React Hooks: functions that allow you to use React features. 
+  - State Hook: useState: adds state to a functional component. 
+  - Context Hook: Shares state across components
+  - Ref Hook: Accesses DOM elements or persists values
+  - Effect Hook: Runs side effects
+  - Performance Hook: Optimizes performance, useMemo: memoization. useCallback
+- React Router:
+  - Allows client side routing in a React app.
+  - `Route`: maps a path to a component
+  - `Link`: creates navigation without page reload 
+- `package.json`: Manages project dependencies and scripts
+  - name, version, main
+- `fetch`: Performs an HTTP request and returns a promise
+- `node.js`: Javascript Runtime built on V8, enabling server-side development
+- `pm2`: Process manager for Node.js apps. Ensures apps run continously and handles restarts.
+- Vite: Modern build tool and develpoment server for frontend projects. Allows us to build projects and deploy them onto the web. 
